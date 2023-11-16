@@ -1,18 +1,20 @@
 let letters = [];
-//let maus;
+
 let lHand;
 let rHand;
+
 let poseNet;
 let video;
 let poses = [];
+
 let frameCount = 0;
 let myTextIndex = 0;
 let myText = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 function setup() {
   createCanvas(1950, 950);
-  maus = createVector(0, 0);
-  hand = createVector(0, 0);
+  lHand = createVector(0, 0);    //Vergessen umzustellen
+  rHand = createVector(0, 0);
 
   //Webcam
  video = createCapture(VIDEO);
@@ -66,18 +68,18 @@ function draw() {
 
 
 
-//function mousePressed() {
-  // Aktualisierung der Position der "Hand" Per Mausklick
- // maus.x = mouseX;
-  //maus.y = mouseY;
-//}
-
 function handMove() {
   for (let i = 0; i < poses.length; i += 1) {
-    const poses = poses[i];
+    const poses = poses[i]; // Console: Cannot access 'poses' before initialization
     //console.log(poses[1].pose.keypoints[9].position)
     //let myXPos = poses[1].pose.keypoints[9].position.x
-    let lHand = poses[1].pose.keypoints[9].position;
+    // poses[1].pose.keypoints[9] = leftWrist
+    // poses[0].pose.leftWrist = leftWrist
+    //let lHand = poses[1].pose.keypoints[9].position;
+
+    let lHand = poses[0].pose.leftWrist
+    let rHand = poses[0].pose.rightWrist
+
     fill(0, 255, 0);
     noStroke();
   ellipse(lHand.x, lHand.y, 10,10)
