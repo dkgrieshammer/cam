@@ -81,6 +81,11 @@ function handMove() {
     myTextIndex %= myText.length; // Sicherstellen, dass der Index nicht außerhalb des Arrays liegt
     frameCount = 0;
   }
+  Console();
+}
+
+function Console() {
+  console.log(poses[0].pose) //Console: Uncaught TypeError: Cannot read properties of undefined (reading 'pose')
 }
 
 
