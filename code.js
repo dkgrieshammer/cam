@@ -17,17 +17,17 @@ function setup() {
   rHand = createVector(0, 0);
 
   //Webcam
- video = createCapture(VIDEO);
- video.size(width, height);
+  video = createCapture(VIDEO);
+  video.size(width, height);
   //ML5 Model = poseNet
- poseNet = ml5.poseNet(video, modelReady);
+  poseNet = ml5.poseNet(video, modelReady);
   // with an array every time new poses are detected
-  poseNet.on('pose', function(results) {
+  poseNet.on('pose', function (results) {
     poses = results;
   });
 
-// Webcamverstecken
-video.hide();
+  // Webcamverstecken
+  video.hide();
 
   // Buchstaben erstellen
   for (let i = 0; i < 100; i++) {
@@ -51,27 +51,27 @@ function draw() {
     letter.display();
     letter.checkCanvasBoundary();
 
-    
+
   }
 
   //handMove();
-function handMove() {
-  for (let i = 0; i < poses.length; i += 1) {
-    const poses = poses[i]; // Kein Problem
-    //console.log(poses[1].pose.keypoints[9].position)
-    //let myXPos = poses[1].pose.keypoints[9].position.x
-    // poses[1].pose.keypoints[9] = leftWrist
-    // poses[0].pose.leftWrist = leftWrist
-    //let lHand = poses[1].pose.keypoints[9].position;
+  function handMove() {
+    for (let i = 0; i < poses.length; i += 1) {
+      const poses = poses[i]; // Kein Problem
+      //console.log(poses[1].pose.keypoints[9].position)
+      //let myXPos = poses[1].pose.keypoints[9].position.x
+      // poses[1].pose.keypoints[9] = leftWrist
+      // poses[0].pose.leftWrist = leftWrist
+      //let lHand = poses[1].pose.keypoints[9].position;
 
-    let lHand = poses[0].pose.leftWrist
-    let rHand = poses[0].pose.rightWrist
+      let lHand = poses[0].pose.leftWrist
+      let rHand = poses[0].pose.rightWrist
 
-    fill(0, 255, 0);
-    noStroke();
-  ellipse(lHand.x, lHand.y, 10,10)
-}
-}
+      fill(0, 255, 0);
+      noStroke();
+      ellipse(lHand.x, lHand.y, 10, 10)
+    }
+  }
 
   frameCount++;
 
@@ -93,11 +93,11 @@ function Console() {
 //function handMove() {
 //  for (let i = 0; i < poses.length; i += 1) {
 //    const poses = poses[i]; // Console: Cannot access 'poses' before initialization
-    //console.log(poses[1].pose.keypoints[9].position)
-    //let myXPos = poses[1].pose.keypoints[9].position.x
-    // poses[1].pose.keypoints[9] = leftWrist
-    // poses[0].pose.leftWrist = leftWrist
-    //let lHand = poses[1].pose.keypoints[9].position;
+//console.log(poses[1].pose.keypoints[9].position)
+//let myXPos = poses[1].pose.keypoints[9].position.x
+// poses[1].pose.keypoints[9] = leftWrist
+// poses[0].pose.leftWrist = leftWrist
+//let lHand = poses[1].pose.keypoints[9].position;
 
 //    let lHand = poses[0].pose.leftWrist
 //    let rHand = poses[0].pose.rightWrist
@@ -107,7 +107,7 @@ function Console() {
 //  ellipse(lHand.x, lHand.y, 10,10)
 //}
 //}
-    //Buchstabe als Klasse definieren
+//Buchstabe als Klasse definieren
 class Letter {
   constructor(x, y) {
     this.pos = createVector(x, y);
